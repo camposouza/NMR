@@ -5,11 +5,11 @@ import pandas as pd
 
 
 def main():
-    data = pd.read_table('data.txt')
-    for i in range(1, data.shape[1]):
-        # Reading results
-        data = pd.read_table('data.txt')
-        t = np.array(data.iloc[:, 0])
+    # Reading results
+    # todo verificar como os dados são passados. São sempre com índice à esquerda e sem cabeçalho?
+    data = pd.read_table('data.txt', index_col=0, header=None)
+    t = np.array(data.index)
+    for i in range(0, data.shape[1]):
         y = np.array(data.iloc[:, i])
 
         # Non-linear Fit
@@ -17,7 +17,7 @@ def main():
         fit_y = model_func(t, A, K, C)
 
         # Showing Results
-        print(f'Conjunto de dados {i}:\n'
+        print(f'Conjunto de dados {i+1}:\n'
               f'  A = {A:.2f}\n  K = {K:.2f}\n  C = {C:.2f}')
 
 
