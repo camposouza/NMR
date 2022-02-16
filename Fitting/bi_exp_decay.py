@@ -9,22 +9,25 @@ def main():
     # Reading results
     data = pd.read_table('data.txt', index_col=0, header=None)
     t = np.array(data.index)
-    y = np.array(data.iloc[:, 0])
+    for i in range(0, data.shape[1]):
+        y = np.array(data.iloc[:, 0])
 
-    fig = plt.figure()
-    ax1 = fig.add_subplot()
+        # Non-linear Fit
+        A1, K1, A2, K2, C = fit_exp_nonlinear(t, y)
+        fit_y = model_func(t, A1, K1, A2, K2, C)
 
-    # Non-linear Fit
-    A1, K1, A2, K2, C = fit_exp_nonlinear(t, y)
-    fit_y = model_func(t, A1, K1, A2, K2, C)
+        # Graphing Result
+        if i == 0:
+            fig = plt.figure()
+            ax1 = fig.add_subplot()
 
-    # Showing Results
-    ax1.scatter(t, y, c='red', s=1,
-                label='Dados experimentais')
-    ax1.plot(t, fit_y, 'b-',
-             label='Curva encontrada:\n $y = %0.2f e^{%0.2f t} + %0.2f e^{%0.2f t} + %0.2f$'
-                   % (A1, K1, A2, K2, C))
-    ax1.legend(bbox_to_anchor=(1.05, 1.1), fancybox=True, shadow=True)
+            ax1.scatter(t, y, c='red', s=1,
+                        label='Dados experimentais')
+            ax1.plot(t, fit_y, 'b-',
+                     label='Curva encontrada:\n $y = %0.2f e^{%0.2f t} + %0.2f e^{%0.2f t} + %0.2f$'
+                           % (A1, K1, A2, K2, C))
+            ax1.legend(bbox_to_anchor=(1.05, 1.1), fancybox=True, shadow=True)
+
     plt.show()
 
 

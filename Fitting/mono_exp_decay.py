@@ -16,7 +16,7 @@ def main():
         A, K, C = fit_exp_nonlinear(t, y)
         fit_y = model_func(t, A, K, C)
 
-        # Graphing Results
+        # Graphing Result
         if i == 0:
             fig = plt.figure()
             ax1 = fig.add_subplot()
