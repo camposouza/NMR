@@ -2,17 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sp
 import scipy.optimize
+import pandas as pd
 
 
 def main():
     # Reading results
-    with open("data.txt", "r") as data:
-        Sig = []
-        for row in data:
-            Sig.append([float(x) for x in row.split()])
-        Sig = np.array(Sig)
-    t = np.array(Sig[:, 0])
-    y = np.array(Sig[:, 1])
+    data = pd.read_table('data.txt')
+    t = np.array(data.iloc[:, 0])
+    y = np.array(data.iloc[:, 1])
 
     fig = plt.figure()
     ax1 = fig.add_subplot()
@@ -39,4 +36,4 @@ def fit_exp_nonlinear(t, y):
 
 
 if __name__ == '__main__':
-    main()
+        main()
