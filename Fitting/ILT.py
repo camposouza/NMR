@@ -13,7 +13,7 @@ dmin = 0
 interacoes = 15
 pontos = 200
 
-data = open('../cpmg.txt', 'r')
+data = open('std_data.txt', 'r')
 
 Sig = []
 for row in data:

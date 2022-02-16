@@ -7,7 +7,7 @@ import pandas as pd
 
 def main():
     # Reading results
-    data = pd.read_csv('data.txt', delimiter='\t', index_col=0, header=None)
+    data = pd.read_csv('std_data.txt', delimiter='\t', index_col=0, header=None)
     t = np.array(data.index)
 
     results = pd.DataFrame(index=['A1', 'K1', 'A2', 'K2', 'C'])
