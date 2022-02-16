@@ -9,8 +9,10 @@ def main():
     # Reading results
     data = pd.read_table('data.txt', index_col=0, header=None)
     t = np.array(data.index)
+
+    results = pd.DataFrame(index=['A', 'K', 'C'])
     for i in range(0, data.shape[1]):
-        y = np.array(data.iloc[:, 0])
+        y = np.array(data.iloc[:, i])
 
         # Non-linear Fit
         A, K, C = fit_exp_nonlinear(t, y)
@@ -27,10 +29,10 @@ def main():
                      label='Curva encontrada:\n $y = %0.2f e^{%0.2f t} + %0.2f$' % (A, K, C))
             ax1.legend(bbox_to_anchor=(1.05, 1.1), fancybox=True, shadow=True)
 
-        # Showing Results
-        print(f'Conjunto de dados {i + 1}:\n'
-              f'  A = {A:.2f}\n  K = {K:.2f}\n  C = {C:.2f}')
+        # Filling the Sheet
+        results.insert(i, i, [A, K, C])
 
+    results.to_csv('FittingResults', sep='\t')
     plt.show()
 
 
