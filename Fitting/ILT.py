@@ -1,6 +1,6 @@
-from matplotlib import pyplot as plt
-from numpy import exp, log10
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
 """
 ------------------------------------------------------------------------
@@ -13,29 +13,23 @@ dmin = 0
 interacoes = 15
 pontos = 200
 
-data = open('std_data.txt', 'r')
+Sig = pd.read_csv("std_data.txt", delimiter='\t', index_col=0, header=None)
 
-Sig = []
-for row in data:
-    Sig.append([float(x) for x in row.split()])
-Sig = np.matrix(Sig)
-data.close()
-
-t = np.matrix(Sig[:, 0] / 1000)
-Mx = np.matrix(Sig[:, 1])
+t = np.array(Sig.index / 1000)
+Mx = np.array(Sig.iloc[:, 1])
 My = np.zeros(np.size(Mx))
 
 n = len(Mx)
 Ti = 0.001
 Tf = 10
 
-T = np.logspace(log10(Ti), log10(Tf), pontos)
+T = np.logspace(np.log10(Ti), np.log10(Tf), pontos)
 
 K = []
 for i in range(0, n):
     row = []
     for j in range(0, pontos):
-        row.append(exp(-t[i] / T[j]))
+        row.append(np.exp(-t[i] / T[j]))
     K.append(row)
 K = np.matrix(K)
 
@@ -95,21 +89,26 @@ for inte in range(1, interacoes + 1):
         L[indf[i], indf[i]] = L[indf[i], indf[i]] + 10000
 
 
-g = g / np.sum(g)
+g = (g / np.sum(g)).T
 
 
 # ===== Graficando Resultados =====
 fig1 = plt.figure()
 
+# CPMG
 ax1 = fig1.add_subplot(2, 2, 1)
-ax1.plot(t, Mx, t, My)
+ax1.plot(t, Mx, label='Real')
+ax1.plot(t, My, label='Imag')
 ax1.set_title('CPMG')
+ax1.legend()
 
+# Valores Singulares
 ax2 = fig1.add_subplot(2, 2, 2)
 ax2.stem(range(1, len(S) + 1), vd)
 ax2.set_title('Valores Singulares')
 ax2.set_yscale('log')
 
+# Distribuição T2
 ax3 = fig1.add_subplot(2, 1, 2)
 ax3.plot(T, g)
 ax3.set_title('Distribuição T2')
