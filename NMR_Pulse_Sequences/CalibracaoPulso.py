@@ -102,5 +102,5 @@ ax3.set_title("Calibração de Pulso")
 ax3.set_xlabel("Ângulo de Puls(rad)")
 ax3.set_ylabel("Intensidade")
 
-fig.tight_layoud(pad=5)
+fig.tight_layout()
 plt.show()
