@@ -2,12 +2,6 @@ import numpy as np
 from numpy import pi, cos, sin
 import matplotlib.pyplot as plt
 from scipy import fftpack
-"""
-------------------------------------------------------------------------
-           Simulacao Imaging NMR               tiagobuemoraes@gmail.com
-------------------------------------------------------------------------
-"""
-
 
 T1 = 300
 T2 = 100

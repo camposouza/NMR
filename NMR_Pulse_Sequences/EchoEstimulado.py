@@ -3,14 +3,10 @@ from numpy import pi, sin, cos
 import matplotlib.pyplot as plt
 
 """ 
-Programa - Eco Estimulado(01 /09/ 2013)
-
 ------------------------------------------------------------------------
 Este programa calcula a Magnetização resultante após a aplicação da seq.
 Eco Estimulado.[90 x_t1_90x_t2_90x_t_eco]
 ------------------------------------------------------------------------
-Programa Pulso Simples - (Maio / 2020) revisão
-
 ------------------------------------------------------------------------
 Este código calcula o comportamentoda Magnetização quando aplicamos um
 CPMG(matricial) de NMR. 90 y_t_[180 x_t_eco]

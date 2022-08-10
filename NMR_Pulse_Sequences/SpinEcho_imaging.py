@@ -3,15 +3,6 @@ from numpy import pi, cos, sin
 import matplotlib.pyplot as plt
 from scipy import fftpack
 
-"""
-Programa - UltraFast (13/11/2014)
-Tiago B. Moraes  - tiagobuemoraes@gmail.com
-
-------------------------------------------------------------------------
-             Spin Echo Imaging  OK!             tiagobuemoraes@gmail.com
-------------------------------------------------------------------------
-"""
-
 T1 = 3000
 T2 = 3000
 

@@ -3,11 +3,7 @@ from numpy import pi, sin, cos
 import matplotlib.pyplot as plt
 from scipy import fftpack
 
-"""
-------------------------------------------------------------------------
-             Gradient Echo Imaging              tiagobuemoraes@gmail.com
-------------------------------------------------------------------------
-"""
+
 
 T1 = 300
 T2 = 300

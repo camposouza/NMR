@@ -58,7 +58,7 @@ for f in range(0, len(df)):
     M[:, 1] = (np.dot(Rtheta1, M[:, 0].reshape((3, 1))) + B).reshape((1, 3))
     for k in range(2, N1 + 2):
         M[:, k] = (np.dot(np.dot(E, Rphi), M[:, k - 1].reshape((3, 1))) + B).reshape((1, 3))
-    N1c = N1 + 1  # N1c = N1 + 1
+    N1c = N1 + 1
 
     for n in range(1, int(np.floor(Np / 2))):
         M[:, N1c] = (np.dot(Rtheta1, M[:, N1c - 1].reshape((3, 1))) + B).reshape((1, 3))
@@ -100,8 +100,6 @@ ax1.plot(df, fL, 'k', label=f'T2 *= {T22} ms')
 ax1.set_title('Distribuicao Lorentziana')
 ax1.set_xlabel('Frequência (x10^3 Hz)')
 ax1.set_ylabel('Intensidade')
-# text(x0 + 1, 0.7, ['T1=', num2str(T1), ' ms'])
-# text(x0 + 1, 0.6, ['T2=', num2str(T2), ' ms'])
 ax1.grid()
 
 ax2 = fig.add_subplot(2, 2, 2)
